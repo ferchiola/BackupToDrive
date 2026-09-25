@@ -22,6 +22,7 @@ Log.Logger = new LoggerConfiguration()
         retainedFileCountLimit: 30)
     .CreateLogger();
 
+var exitCode = 0;
 try
 {
     var builder = Host.CreateApplicationBuilder(new HostApplicationBuilderSettings
@@ -58,17 +59,23 @@ try
     };
 
     var runner = host.Services.GetRequiredService<JobRunner>();
-    return await runner.RunAsync(dryRun, jobName, cts.Token);
+    exitCode = await runner.RunAsync(dryRun, jobName, cts.Token);
 }
 catch (Exception ex)
 {
     Log.Fatal(ex, "Error fatal al iniciar BackupToDrive");
-    return 1;
+    exitCode = 1;
 }
 finally
 {
     await Log.CloseAndFlushAsync();
 }
+
+// El flujo de OAuth de Google (Google.Apis.Auth) deja un HttpListener en un hilo
+// foreground esperando el redirect del navegador; aunque el login ya haya terminado,
+// ese hilo puede seguir vivo y evitar que el proceso termine solo al llegar acá.
+// Environment.Exit fuerza el cierre real del proceso, haya terminado bien o mal.
+Environment.Exit(exitCode);
 
 static bool HasFlag(string[] args, string flag) =>
     args.Any(a => a.Equals(flag, StringComparison.OrdinalIgnoreCase));
