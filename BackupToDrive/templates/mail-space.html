@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Poco espacio en Drive</title>
+</head>
+<!--
+  Placeholders: {{Job}} {{Fecha}} {{EspacioUsado}} {{EspacioTotal}} {{EspacioLibre}}
+  {{DiasEstimados}} {{ArchivoReferencia}} {{UmbralDias}}
+-->
+<body style="margin:0;padding:0;background:#f4f5f7;font-family:Segoe UI,Arial,sans-serif;color:#1c1c1c;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f4f5f7;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="560" cellspacing="0" cellpadding="0" style="max-width:560px;background:#ffffff;border:1px solid #e4e6ea;border-radius:8px;">
+          <tr>
+            <td style="padding:28px 32px 8px;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;color:#b54708;">
+              BackupToDrive
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 32px 8px;font-size:22px;line-height:1.3;">
+              Queda poco espacio en Drive
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 32px 16px;font-size:15px;line-height:1.5;color:#3d3d3d;">
+              Con el tamaño de {{ArchivoReferencia}}, el espacio libre alcanza para {{DiasEstimados}} backups diarios. El aviso es por debajo de {{UmbralDias}}.
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 32px 28px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="font-size:14px;line-height:1.5;color:#3d3d3d;">
+                <tr><td style="padding:4px 12px 4px 0;color:#6b6b6b;vertical-align:top;">Job</td><td>{{Job}}</td></tr>
+                <tr><td style="padding:4px 12px 4px 0;color:#6b6b6b;vertical-align:top;">Fecha</td><td>{{Fecha}}</td></tr>
+                <tr><td style="padding:4px 12px 4px 0;color:#6b6b6b;vertical-align:top;">Usado</td><td>{{EspacioUsado}} de {{EspacioTotal}}</td></tr>
+                <tr><td style="padding:4px 12px 4px 0;color:#6b6b6b;vertical-align:top;">Libre</td><td>{{EspacioLibre}}</td></tr>
+                <tr><td style="padding:4px 12px 4px 0;color:#6b6b6b;vertical-align:top;">Alcanza para</td><td>{{DiasEstimados}} días</td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,10 @@
+bin/
+obj/
+logs/
+*.user
+appsettings.json
+appsettings.Development.json
+!appsettings.Example.json
+**/credentials/*.json
+**/credentials/oauth-token/
+!**/credentials/.gitkeep
